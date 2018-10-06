@@ -2,7 +2,7 @@
 
 This library serves to encrypt and decrypt text in 2 lines using the Gauss-Jacques algorithm which is one of the safest algorithms.
 
-To learn more about the Gauss-Jacques algorithm read [https://www.uaq.mx/investigacion/revista_ciencia@uaq/ArchivosPDF/v11-n1/art14_numerada-VF.pdf](this article)
+To learn more about the Gauss-Jacques algorithm read [this article](https://www.uaq.mx/investigacion/revista_ciencia@uaq/ArchivosPDF/v11-n1/art14_numerada-VF.pdf)
  
 ## Features
 - Out of the box encrypt/decrypt text
@@ -41,5 +41,5 @@ Krynapsis Library is available under the [MIT license](LICENSE.md).
 
 ## Contact
 [OverCode Solutions](https://overcode.mx)
-[mailto:jacques@uaq.edu.mx](Fausto Abraham Jacques García)
+[Fausto Abraham Jacques García](mailto:jacques@uaq.edu.mx)
 
