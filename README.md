@@ -20,7 +20,7 @@ There are 2 ways to start the library.
 Krynapsis.init("[49,66,36][57,7,65][78,13,54]");
 ```
 
-2. TODO: Generate the matrix automatically and store it in the device.
+2. Generate the matrix automatically and store it in the device.
 ```java
 Krynapsis.init(context);
 ```
