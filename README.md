@@ -40,6 +40,6 @@ String decrypted = Krynapsis.decrypt(encrypted);
 Krynapsis Library is available under the [MIT license](LICENSE.md).
 
 ## Contact
-[OverCode Solutions](https://overcode.mx)
+[OverCode Solutions](https://overcode.mx) and 
 [Fausto Abraham Jacques García](mailto:jacques@uaq.edu.mx)
 
