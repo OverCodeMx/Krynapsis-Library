@@ -1,13 +1,15 @@
 package mx.overcode.krynapsislibrary;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 
 import mx.overcode.krynapsislibrary.util.CryptographyHelpers;
 import mx.overcode.krynapsislibrary.util.MatrixHelpers;
 
 public class Krynapsis {
 
-    private static int[][] matrix;
+    private static Integer[][] matrix;
 
     private static MatrixHelpers matrixHelpers = new MatrixHelpers();
     private static CryptographyHelpers cryptographyHelpers = new CryptographyHelpers();
@@ -28,7 +30,20 @@ public class Krynapsis {
     }
 
     public static void init(Context context){
-        matrix = matrixHelpers.generarMatriz(size, valores.length, 50);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Krynapsis", Context.MODE_PRIVATE);
+
+        if(sharedPreferences.getString("key", null) ==null){
+            matrix = matrixHelpers.generarMatriz(size, valores.length, 50);
+            String matrixString = matrixHelpers.MatrixToString(matrix);
+            Log.d("matrixString", matrixString);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("key", matrixString);
+            editor.apply();
+        }
+        else{
+            String stringMatrix = sharedPreferences.getString("key", null);
+            matrix = matrixHelpers.StringToMatrix(stringMatrix);
+        }
     }
 
 
@@ -37,7 +52,7 @@ public class Krynapsis {
     }
 
     public static String decrypt(String phrase){
-        int[][] inversa = matrixHelpers.inversaModular(matrix, valores.length, size);
+        Integer[][] inversa = matrixHelpers.inversaModular(matrix, size, valores.length);
         return cryptographyHelpers.encriptarPalabra(phrase, inversa, valores, size);
     }
 }

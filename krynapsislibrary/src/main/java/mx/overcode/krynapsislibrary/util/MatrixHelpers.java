@@ -1,12 +1,29 @@
 package mx.overcode.krynapsislibrary.util;
 
+import android.text.TextUtils;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MatrixHelpers {
-    public int[][] StringToMatrix(String string){
+
+    public String MatrixToString(Integer[][] matrix){
+        String stringMatrix = "[";
+        List<String> rows = new ArrayList<>();
+        for (Integer[] r: matrix) {
+            rows.add(TextUtils.join(",", r));
+        }
+
+        stringMatrix += TextUtils.join("][", rows);
+        stringMatrix += "]";
+
+        return stringMatrix;
+    }
+
+    public Integer[][] StringToMatrix(String string){
         Pattern p = Pattern.compile("\\[([^]]+)\\]");
         Matcher m = p.matcher(string);
         List<String> tokens = new LinkedList<>();
@@ -16,7 +33,7 @@ public class MatrixHelpers {
             tokens.add(token);
         }
 
-        int[][] key = new int [tokens.size()][tokens.size()];
+        Integer[][] key = new Integer [tokens.size()][tokens.size()];
 
         for(int i = 0; i < tokens.size(); i++){
             String[] parts = tokens.get(i).split(",");
@@ -28,10 +45,10 @@ public class MatrixHelpers {
         return key;
     }
 
-    public int[][] generarMatriz(int size, int modulo, int maxNum){
+    public Integer[][] generarMatriz(int size, int modulo, int maxNum){
 
-        int k3[][] = new int [size][size];
-        int k[][] = new int [size][size];
+        Integer k3[][] = new Integer [size][size];
+        Integer k[][] = new Integer [size][size];
         int k1[][] = new int [size][size];
 
         //Limpiando matriz
@@ -74,7 +91,7 @@ public class MatrixHelpers {
         }
 
         //Se ejecuta hasta que encuentre la inversa modular correcta
-        while(((inversaModular(k3,size,modulo)) == null)){
+        while(((inversaModular(k, size,modulo)) == null)){
 
             while(!compruebaInversa(k, size,modulo)){
 
@@ -99,7 +116,7 @@ public class MatrixHelpers {
         return k3;
     }
 
-    private int determinante(int matriz[][], int size){
+    private int determinante(Integer matriz[][], int size){
         int i,j,k,l,m,n ;
         n=size;
 
@@ -129,7 +146,7 @@ public class MatrixHelpers {
         return (int)det;
     }//Fin determinante
 
-    private Boolean compruebaInversa(int k[][], int size, int modulo){
+    private Boolean compruebaInversa(Integer k[][], int size, int modulo){
 
         int deter = determinante(k, size);
         int divisoresDeter =  0;
@@ -162,9 +179,9 @@ public class MatrixHelpers {
         return inversa;
     }//Fin compruebaInversa
 
-    public int[][] inversaModular(int k[][], int modulo, int size){
+    public Integer[][] inversaModular(Integer k[][], int size, int modulo){
 
-        int[][] k1 = new int[size][size];
+        Integer[][] k1 = new Integer[size][size];
 
         for(int a=0; a<size; a++){
             for(int b=0; b<size; b++){
@@ -183,7 +200,7 @@ public class MatrixHelpers {
             //cout<<endl<<endl;
             //imprimirMatriz(k,size);
 
-            reducirUno(k,k1, a, size, modulo);
+            reducirUno(k, k1, a, size, modulo);
 
             for(int b=a; b<(size-1); b++){
                 sumarRenglones(k,k1, b, size, a, false);
@@ -227,7 +244,7 @@ public class MatrixHelpers {
         return k1;
     }
 
-    private void sumarRenglones(int k[][],int k1[][], int indicador, int size,int  indicadorRenglon, boolean orientacion){
+    private void sumarRenglones(Integer k[][], Integer k1[][], int indicador, int size,int  indicadorRenglon, boolean orientacion){
 
         /*
          *	x = numero por el que se multiplica para poder hacer 0 el numero
@@ -269,7 +286,7 @@ public class MatrixHelpers {
 
     }
 
-    private void comprobarNumerosNegativos(int k[][],int k1[][], int indicador, int size, int modulo,boolean orientacion){
+    private void comprobarNumerosNegativos(Integer k[][], Integer k1[][], int indicador, int size, int modulo,boolean orientacion){
 
         /*
          *Indicador es el renglon en el cual se encuentra segun el for
@@ -365,7 +382,7 @@ public class MatrixHelpers {
         return x;
     }
 
-    private void reducirUno(int k[][], int k1[][], int indicador, int size, int modulo){
+    private void reducirUno(Integer k[][], Integer k1[][], int indicador, int size, int modulo){
         //indicador es el numero que contine el numero de renglon
 
 

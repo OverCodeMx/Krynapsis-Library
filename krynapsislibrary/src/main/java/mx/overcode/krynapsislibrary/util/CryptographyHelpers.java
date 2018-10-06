@@ -33,7 +33,7 @@ public class CryptographyHelpers {
         }
     }
 
-    public String encriptarPalabra(String palabraEncriptar, int[][] key, char[] valores, int size){
+    public String encriptarPalabra(String palabraEncriptar, Integer[][] key, char[] valores, int size){
         String palabraEncriptada="";
         int noComodines=0;
         int sizeTotal=0;
@@ -54,7 +54,7 @@ public class CryptographyHelpers {
         return palabraEncriptada;
     }
 
-    private String encriptarTexto(int k3[][],int size, int modulo, int textoNumeros[], int sizeTexto,char valores[]){
+    private String encriptarTexto(Integer k3[][],int size, int modulo, int textoNumeros[], int sizeTexto,char valores[]){
         int textoEncriptado [] = new int [sizeTexto];
         int iterador =0;
         for(int a=0; a<sizeTexto;){

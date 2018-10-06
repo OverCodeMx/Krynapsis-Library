@@ -27,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
         tvResultEncrypt = findViewById(R.id.tvResultEncrypt);
         tvResultDencrypt = findViewById(R.id.tvResultDencrypt);
 
-        Krynapsis.init("[49,66,36][57,7,65][78,13,54]");
+        // Krynapsis.init("[49,66,36][57,7,65][78,13,54]");
+
+        Krynapsis.init(this);
 
         btnEncrypt.setOnClickListener(new View.OnClickListener() {
             @Override
