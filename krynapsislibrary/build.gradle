@@ -1,15 +1,31 @@
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'com.android.library'
+
+
+publish {
+
+    def groupProjectID = 'mx.overcode'
+    def artifactProjectID = 'krynapsislibrary'
+    def publishVersionID = '0.0.1'
+
+    userOrg = 'aldo'
+    repoName = 'overcode-libraries'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'Cryptography library using the Gauss-Jacques algorithm'
+    website = 'https://github.com/OverCodeMx/Krynapsis-Library.git'
+
+}
 
 android {
     compileSdkVersion 28
-
-
 
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 

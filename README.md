@@ -9,6 +9,14 @@ To learn more about the Gauss-Jacques algorithm read [this article](https://www.
 - Use one of the most secure encryption algorithms
 - More features coming soon..
 
+
+# Install
+```java
+dependencies {
+    implementation 'mx.overcode:krynapsislibrary:0.0.1'
+}
+```
+
 ## Usage
 
 ### Initialize the library

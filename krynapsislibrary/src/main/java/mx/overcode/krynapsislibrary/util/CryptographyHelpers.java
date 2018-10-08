@@ -1,27 +1,14 @@
 package mx.overcode.krynapsislibrary.util;
 
+import java.text.Normalizer;
+
 public class CryptographyHelpers {
 
     private MatrixHelpers matrixHelpers = new MatrixHelpers();
 
     private void asignarNumerosLetras(char valores[], int modulo, String texto, int textoNumeros[]){
 
-        char textoSinAce[]= texto.toCharArray();
-        //Quita los acentos
-        for(int a=0; a<texto.length(); a++){
-            if(textoSinAce[a] =='á'){
-                textoSinAce[a]='a';
-            }else if(textoSinAce[a]=='é'){
-                textoSinAce[a]='e';
-            }else if(textoSinAce[a]=='í'){
-                textoSinAce[a]='i';
-            }else if(textoSinAce[a]=='ó'){
-                textoSinAce[a]='o';
-            }else if(textoSinAce[a]=='ú'){
-                textoSinAce[a]='u';
-            }
-        }
-        texto = String.valueOf(textoSinAce);
+        texto = Normalizer.normalize(texto, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
 
         for(int a=0; a<texto.length(); a++){
             for(int b=0; b<modulo; b++){
